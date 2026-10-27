@@ -1,0 +1,95 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+---
+
+<main class="under-construction">
+  <div class="copy">
+    <Image
+      class="logo"
+      src={logo}
+      alt="Amity Dental Solutions"
+      width={240}
+      densities={[1, 2]}
+      loading="eager"
+    />
+    <h1>Uh oh! You reached the website while it's <span class="highlight">under construction</span>!</h1>
+    <p>
+      We're just as stoked as you are at Amity, however, we want to ensure you're provided the best
+      experience possible.
+    </p>
+    <p class="soon">We'll be done soon!</p>
+    <p class="signature">- Amity Team</p>
+  </div>
+
+  <picture class="illustration">
+    <source srcset="/illustration-still.svg" media="(prefers-reduced-motion: reduce)" />
+    <img src="/illustration.svg" alt="" width="882" height="551" fetchpriority="high" />
+  </picture>
+</main>
+
+<style>
+  .under-construction {
+    display: grid;
+    gap: clamp(1.5rem, 1rem + 3vw, 4rem);
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: var(--content-max);
+    min-height: 100dvh;
+    margin-inline: auto;
+    padding: var(--space-page);
+  }
+
+  /* Phones: illustration on top. Markup keeps the copy first for screen readers. */
+  .illustration {
+    order: -1;
+  }
+
+  .illustration img {
+    width: 100%;
+    height: auto;
+  }
+
+  .copy {
+    display: grid;
+    gap: 1rem;
+    max-width: 36rem;
+  }
+
+  .logo {
+    width: clamp(10rem, 8rem + 8vw, 15rem);
+    height: auto;
+    margin-bottom: 0.5rem;
+    justify-self: center;
+  }
+
+  .highlight {
+    text-decoration: underline;
+    text-decoration-color: var(--color-highlight);
+    text-decoration-thickness: 0.18em;
+    text-underline-offset: 0.12em;
+    text-decoration-skip-ink: none;
+  }
+
+  .soon {
+    font-weight: 600;
+  }
+
+  .signature {
+    font-style: italic;
+    padding-top: 0.75rem;
+    border-top: 3px solid var(--color-decoration);
+    justify-self: start;
+  }
+
+  @media (min-width: 768px) {
+    .under-construction {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .illustration {
+      order: 0;
+    }
+  }
+</style>

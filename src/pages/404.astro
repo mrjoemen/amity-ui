@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import logo from '../assets/logo.png';
+---
+
+<BaseLayout title="Page not found" description="This page doesn't exist on Amity Dental Solutions.">
+  <main class="not-found">
+    <Image src={logo} alt="Amity Dental Solutions" width={200} densities={[1, 2]} />
+    <h1>We couldn't find that page</h1>
+    <p>The link may be broken, or the page may have moved.</p>
+    <p><a href="/">Go to the home page</a></p>
+  </main>
+</BaseLayout>
+
+<style>
+  .not-found {
+    display: grid;
+    gap: 1rem;
+    place-content: center;
+    justify-items: center;
+    min-height: 100dvh;
+    padding: var(--space-page);
+    text-align: center;
+  }
+
+  .not-found img {
+    width: clamp(9rem, 7rem + 6vw, 12.5rem);
+    height: auto;
+    margin-bottom: 0.5rem;
+  }
+</style>

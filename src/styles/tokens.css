@@ -1,0 +1,28 @@
+/*
+ * Brand tokens: the only place brand colors are defined.
+ * Components use the semantic names below, never the raw brand names.
+ */
+:root {
+  /* Raw brand palette */
+  --brand-primary: #668faf;
+  --brand-secondary: #1f3d63;
+  --brand-accent: #f7cc4c;
+  --brand-background: #f5f4f0;
+
+  /*
+   * Semantic roles. Contrast on --brand-background:
+   *   secondary 10.0:1 -> all text
+   *   primary    3.1:1 -> large text or decoration only
+   *   accent     1.4:1 -> decoration only
+   */
+  --color-bg: var(--brand-background);
+  --color-text: var(--brand-secondary);
+  --color-heading: var(--brand-secondary);
+  --color-decoration: var(--brand-primary);
+  --color-highlight: var(--brand-accent);
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --space-page: clamp(1rem, 0.5rem + 3vw, 3rem);
+  --content-max: 75rem;
+}

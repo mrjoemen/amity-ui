@@ -1,0 +1,13 @@
+---
+import { MAINTENANCE_MODE } from 'astro:env/server';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import UnderConstruction from '../components/UnderConstruction.astro';
+
+// Flip to true once a landing page exists and is rendered below.
+const LANDING_READY = false;
+const showUnderConstruction = MAINTENANCE_MODE === 'true' || !LANDING_READY;
+---
+
+<BaseLayout>
+  {showUnderConstruction && <UnderConstruction />}
+</BaseLayout>
