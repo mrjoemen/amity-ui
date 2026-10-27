@@ -59,6 +59,12 @@ test.describe('content', () => {
     for (const color of colors) expect(color).toBe('rgb(31, 61, 99)');
   });
 
+  test('uses Montserrat for text', async ({ page }) => {
+    await page.goto('/');
+    const family = await page.locator('h1').evaluate((el) => getComputedStyle(el).fontFamily);
+    expect(family).toMatch(/^Montserrat\b/);
+  });
+
   test('has no accessibility violations', async ({ page }) => {
     await page.goto('/');
     const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();

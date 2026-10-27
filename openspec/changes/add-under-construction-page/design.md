@@ -111,7 +111,8 @@ Remove any Squarespace default records for `@` and `www` that conflict (e.g. Squ
 - *Alternative:* `www` as primary — rejected by the owner; bare domain is the main address.
 
 ### 8. Fonts
-Use a system font stack by default. If the owner has a brand font, self-host it via Astro's font support or `@fontsource` to avoid third-party requests (spec: self-contained page).
+The owner chose **Montserrat**, loaded from Google Fonts with a `<link>` in `BaseLayout` (weights 400–700, italic 400, `display=swap` so the system font shows until it loads). This is a stylesheet, not a script, so the spec's no-third-party-scripts rule still holds.
+- *Alternative:* self-host with `@fontsource-variable/montserrat` — tried and rejected by the owner: an extra dependency to maintain for one page. Self-hosting would avoid the Google request (slightly faster, no visitor IPs sent to Google, no outside dependency) if that ever matters.
 
 ### 9. Verification with Playwright against the built site
 Add `@playwright/test` as a dev dependency with a few smoke tests run against `astro preview`: content present, side-by-side at 1280px and 768px (compare bounding boxes), stacked at 360px with no horizontal overflow (`scrollWidth <= clientWidth`), `/maintenance` returns 200, unknown path returns 404, and the page works with JavaScript disabled. Contrast is checked with `@axe-core/playwright`.
